@@ -1,17 +1,19 @@
 <template>
   <div style="max-height: 500px; overflow-y: auto">
-  <b-table
-    class="bg-white m-auto"
-    hover
-    striped
-    :items="equipments"
-    :fields="fields">
-    <template #cell(serial)="data">
-      <!-- `data.value` is the value after formatted by the Formatter -->
-<!--      <a :href="`#${data.value.replace(/[^a-z]+/i,'-').toLowerCase()}`">{{ data.value }}</a>-->
-      <a @click="toEquipment(data.item.id)">{{ data.value }}</a>
-    </template>
-  </b-table>
+    <b-table
+      :fields="fields"
+      :items="equipments"
+      class="bg-white m-auto"
+      hover
+      striped>
+      <template #cell(serial)="data">
+        <a @click="toEquipment(data.item.id)">{{ data.value }}</a>
+      </template>
+      <template #cell(del)="data">
+        <b-icon icon="x-circle" scale="2" variant="danger" @click="del(data.item
+)"></b-icon>
+      </template>
+    </b-table>
   </div>
 </template>
 
@@ -31,6 +33,10 @@ export default {
         {
           key: 'type.title',
           label: 'Название'
+        },
+        {
+          key: 'del',
+          label: ''
         }
       ]
     }
@@ -38,6 +44,9 @@ export default {
   methods: {
     toEquipment (id) {
       this.$router.push('/equipment/' + id)
+    },
+    del (item) {
+      this.$emit('del', item)
     }
   }
 }

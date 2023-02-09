@@ -33,10 +33,11 @@ export default {
   },
   methods: {
     loadEquipment () {
-      apiClient.get('/equipment/' + this.$route.params.id).then(responce => {
-        this.equipment = responce.data.data
-      })
-      this.$forceUpdate()
+      if (this.edit) {
+        apiClient.get('/equipment/' + this.$route.params.id).then(responce => {
+          this.equipment = responce.data.data
+        })
+      }
     }
   }
 }

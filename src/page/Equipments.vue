@@ -5,6 +5,7 @@
   </div>
   <table-equipments
   :equipments = 'equipments'
+  @del="del"
   />
 
 </div>
@@ -37,6 +38,11 @@ export default {
     },
     createEquipment () {
       this.$router.push('/equipment-new')
+    },
+    del (item) {
+      apiClient.delete('/equipment/' + item.id).then(responce => {
+        this.listEquipment()
+      })
     }
   }
 }

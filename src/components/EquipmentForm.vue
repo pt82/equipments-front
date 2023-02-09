@@ -1,12 +1,13 @@
 <template>
 <div style="height: 400px; padding: 20px" class="bg-white flex">
   <div><b-alert v-if="alert" variant="danger" show>Неверная маска</b-alert></div>
+  <div><b-alert v-if="alertFieldReq" variant="danger" show>Не заполнены обязательные поля</b-alert></div>
   <div class="">
   <b-button @click="save" class="bg-primary">Сохранить</b-button>
   </div>
   <div class="mt-3" style="position: relative">
   <label class="float-start">Модель</label>
-  <b-form-input v-model="searchTypeVal.title" @input="searchType" placeholder=""></b-form-input>
+  <b-form-input :state="validTitle" v-model="searchTypeVal.title" @input="searchType" placeholder=""></b-form-input>
     <div v-if="showListType" class="bg-info" style="position: absolute; width: 100%; z-index: 1000">
       <div v-for="type in types" :key="type.id">
         <div class="" @click="selectType(type)" style="border: solid 1px grey; cursor: pointer">{{type.title}}</div>
@@ -15,11 +16,11 @@
   </div>
   <div class="mt-3">
     <label class="float-start">Маска</label>
-    <b-form-input readonly v-model="searchTypeVal.mask" placeholder=""></b-form-input>
+    <b-form-input v-model="searchTypeVal.mask" placeholder=""></b-form-input>
   </div>
   <div class="mt-3">
-    <label class="float-start">Cерийный номер</label>
-    <b-form-input id="serial" v-model="localEquipment.serial" placeholder="Ведите серийный номер"></b-form-input>
+    <label  class="float-start">Cерийный номер</label>
+    <b-form-input id="serial" :state="validSerial" v-model="localEquipment.serial" placeholder="Ведите серийный номер"></b-form-input>
   </div>
 </div>
 
@@ -37,10 +38,11 @@ export default {
   data () {
     return {
       alert: false,
+      alertFieldReq: false,
       localEquipment: {
         id: null,
-        serial: '',
-        type_id: ''
+        serial: null,
+        type_id: null
       },
       showListType: false,
       searchTypeVal: {
@@ -48,6 +50,20 @@ export default {
         mask: null
       },
       types: ''
+    }
+  },
+  computed: {
+    validSerial () {
+      if (!this.localEquipment.serial) {
+        return false
+      }
+      return true
+    },
+    validTitle () {
+      if (!this.searchTypeVal.title) {
+        return false
+      }
+      return true
     }
   },
   created () {
@@ -64,6 +80,13 @@ export default {
     }
   },
   methods: {
+    validateFields () {
+      if (!this.validTitle || !this.validSerial) {
+        this.alertFieldReq = true
+        return false
+      }
+      return true
+    },
     searchType (val) {
       this.types = []
       apiClient.get('/equipment-type?search=' + val).then(responce => {
@@ -73,13 +96,21 @@ export default {
       this.$forceUpdate()
     },
     save () {
+      if (!this.validateFields()) {
+        return
+      }
       if (this.edit) {
         apiClient.put('/equipment/' + this.localEquipment.id, this.localEquipment).then(responce => {
           if (responce.data.errors.length === 0) {
-            console.log(responce.data)
             this.$router.push('/equipments')
           } else {
             this.alert = true
+          }
+        }).catch(error => {
+          if (error.response) {
+            if (error.response.data.serial) {
+              alert(error.response.data.serial[0])
+            }
           }
         })
       } else {
@@ -88,6 +119,12 @@ export default {
             this.$router.push('/equipments')
           } else {
             this.alert = true
+          }
+        }).catch(error => {
+          if (error.response) {
+            if (error.response.data.serial) {
+              alert(error.response.data.serial[0])
+            }
           }
         })
       }
