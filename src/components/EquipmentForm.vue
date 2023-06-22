@@ -89,8 +89,8 @@ export default {
     },
     searchType (val) {
       this.types = []
-      apiClient.get('/equipment-type?search=' + val).then(responce => {
-        this.types = responce.data.data.data
+      apiClient.get('/equipment-type?search=' + val).then(response => {
+        this.types = response.data.data.data
         this.showListType = true
       })
       this.$forceUpdate()
@@ -100,8 +100,8 @@ export default {
         return
       }
       if (this.edit) {
-        apiClient.put('/equipment/' + this.localEquipment.id, this.localEquipment).then(responce => {
-          if (responce.data.errors.length === 0) {
+        apiClient.put('/equipment/' + this.localEquipment.id, this.localEquipment).then(response => {
+          if (response.data.errors.length === 0) {
             this.$router.push('/equipments')
           } else {
             this.alert = true
@@ -114,8 +114,8 @@ export default {
           }
         })
       } else {
-        apiClient.post('/equipment', this.localEquipment).then(responce => {
-          if (responce.data.errors.length === 0) {
+        apiClient.post('/equipment', this.localEquipment).then(response => {
+          if (response.data.errors.length === 0) {
             this.$router.push('/equipments')
           } else {
             this.alert = true

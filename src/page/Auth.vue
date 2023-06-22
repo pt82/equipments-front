@@ -1,21 +1,12 @@
 <template>
   <div>
-    <!--    <form class="login" @submit.prevent="auth">-->
-    <!--      <h1>Sign in</h1>-->
-    <!--      <label>Email</label>-->
-    <!--      <input required v-model="email" type="email" placeholder="Snoopy">-->
-    <!--      <label>Password</label>-->
-    <!--      <input required v-model="password" type="password" placeholder="Password">-->
-    <!--      <hr/>-->
-    <!--      <button type="submit">Login</button>-->
-    <!--    </form>-->
     <section class="vh-100">
-      <div class="container-fluid h-custom">
+      <div class="container-fluid h-custom" >
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-md-9 col-lg-6 col-xl-5">
-            <img alt="Sample image"
+            <img style="width: 500px" alt="Sample image"
                  class="img-fluid"
-                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+                 :src="logo">
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form @submit.prevent="auth">
@@ -94,6 +85,7 @@
 
 import {mapActions} from 'vuex'
 import {apiClient} from '../services/api'
+import logo from '../assets/Auth/Logo.jpg'
 
 export default {
   name: 'Auth',
@@ -103,7 +95,8 @@ export default {
       regpassword: null,
       regemail: null,
       password: '',
-      email: ''
+      email: '',
+      logo: logo
     }
   },
   methods: {
@@ -116,7 +109,7 @@ export default {
         email: this.email,
         password: this.password
       }).then(() => {
-        this.$router.push('equipments')
+        this.$router.push('main')
       })
     },
     reg () {
@@ -140,7 +133,6 @@ export default {
           }
         }
       })
-      // }
     }
   }
 }
