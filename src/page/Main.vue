@@ -1,6 +1,6 @@
 <template>
 <div @click="filter" style="font-size: 40px; color: white">
-  Тут Марат будет верстать {{con}}
+  Тут Марат будет верстать {{con}} о боже
   <leftColumn/>
 </div>
 </template>
