@@ -1,21 +1,45 @@
 <template>
 <div @click="filter" style="font-size: 40px; color: white">
-  Тут Марат будет верстать {{con}} о боже
-  <left/>
+  <Header/>
+  <body class="content">
+    <CharBar
+    :chars="chars"
+    />
+    <Report/>
+  </body>
+
 </div>
 </template>
 <script>
 
-import Left from '../components/Left.vue'
+import './Main.css'
+import Header from '../components/Header/Header.vue'
+import CharBar from '../components/CharBar/CharBar.vue'
+import Report from '../components/Report/Report.vue'
 
 export default {
   name: 'Main',
   components: {
-    Left
+    Header,
+    CharBar,
+    Report
   },
   data () {
     return {
-      con: 1
+      chars: [
+        {
+          id: 1,
+          name: 'Марат'
+        },
+        {
+          id: 2,
+          name: 'Петя'
+        },
+        {
+          id: 3,
+          name: 'Руслан'
+        }
+      ]
     }
   },
   created () {
@@ -28,7 +52,6 @@ export default {
   },
   methods: {
     filter () {
-      console.log('sdfsdf')
     }
   }
 }

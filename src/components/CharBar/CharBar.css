@@ -1,0 +1,27 @@
+.charList {
+  width: 25%;
+  height: 100%;
+  border: 1px solid red;
+  background-color: rgb(106, 103, 103);
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+
+.charTitle {
+  font-size: 32px;
+  align-self: center;
+}
+
+.charItem {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
