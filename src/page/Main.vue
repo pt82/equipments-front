@@ -1,16 +1,18 @@
 <template>
 <div @click="filter" style="font-size: 40px; color: white">
   Тут Марат будет верстать {{con}}
-  <leftColumn/>
+  <left-column/>
 </div>
 </template>
 <script>
-import leftColumn from '../components/leftColumn.vue'
+
+import LeftColumn from '../components/leftColumn'
+
 export default {
   name: 'Main',
+  components: {LeftColumn},
   comments: {
-    leftColumn
-  },
+    LeftColumn },
   data () {
     return {
       con: 1

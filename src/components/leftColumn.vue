@@ -1,18 +1,13 @@
 <template>
-  <div>
-    kdsfghksdfjhgkds
-  </div>
+<div>Left</div>
 </template>
+
 <script>
 export default {
-  name: 'leftColumn',
-  data () {
-    return { }
-  }
+  name: 'LeftColumn'
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>
