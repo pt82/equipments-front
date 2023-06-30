@@ -1,10 +1,31 @@
 <template>
 <div class="charList">
   <h2 class="title">Персонажи</h2>
+  <div class="charRel">
+    <input type="checkbox"/>
+    <label>1р</label>
+    <input type="checkbox"/>
+    <label>2р</label>
+    <input type="checkbox"/>
+    <label>3р</label>
+    <input type="checkbox"/>
+    <label>4р</label>
+    <input type="checkbox"/>
+    <label>5р</label>
+    <input type="checkbox"/>
+    <label>6р</label>
+    <input type="checkbox"/>
+    <label>7р</label>
+    <input type="checkbox"/>
+    <label>8р</label>
+    <input type="checkbox"/>
+    <label>9р</label>
+  </div>
   <div class="charItem" v-for="item in chars" :key="item.id">
     <div>
       <input @input="select(item.id)" type="checkbox" :id="'checkbox_' + item.id" />
-      <label :class="addClass(item.id)" :for="'checkbox_' + item.id">{{ item.name }}</label>
+      <label>{{ item.name }}</label>
+      <!-- <label :class="addClass(item.id)" :for="'checkbox_' + item.id">{{ item.name }}</label> -->
     </div>
   </div>
 </div>
@@ -28,14 +49,14 @@ export default {
   methods: {
     select (item) {
       console.log(item)
-    },
-    addClass (value) {
-      if (value > 1) {
-        return 'red'
-      } else {
-        return 'green'
-      }
     }
+    // addClass (value) {
+    //   if (value > 1) {
+    //     return 'red'
+    //   } else {
+    //     return 'green'
+    //   }
+    // }
   }
 
 }
