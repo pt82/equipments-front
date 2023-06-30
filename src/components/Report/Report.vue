@@ -1,10 +1,15 @@
 <template>
-<div class="charList">
-  <h2 class="charTitle">Отчет</h2>
-  <div class="charItem" v-for="item in chars" :key="item.id">
-    <div>
-      <input @input="select(item.id)" type="checkbox" :id="'checkbox_' + item.id" />
-      <label :class="addClass(item.id)" :for="'checkbox_' + item.id">{{ item.name }}</label>
+<div class="reportList">
+  <h2 class="title">Отчет</h2>
+  <div class="reportItems" v-for="item in guildmember" :key="item.id">
+    <div class="reportItem">
+      <h3 class="guildmember">{{ item.name }}</h3>
+      <div class="guildmemberStore">
+        <div class="guildmemberChars" v-for="item in guildmemberChars" :key="item.id">
+          <p class="guildmemberCharRelict">{{ item.relict }}р</p>
+          <p class="guildmemberCharName">{{ item.name }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -12,19 +17,23 @@
 
 <script>
 export default {
-  name: 'CharBar',
+  name: 'Report',
   props:
   {
-    chars:
+    guildmember:
+      {
+        type: Array
+      },
+    guildmemberChars:
       {
         type: Array
       }
   },
-  data () {
-    return {
-      selectChars: []
-    }
-  },
+  // data () {
+  //   return {
+  //     selectChars: []
+  //   }
+  // },
   methods: {
     select (item) {
       console.log(item)

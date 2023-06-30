@@ -1,6 +1,6 @@
 <template>
 <div class="charList">
-  <h2 class="charTitle">Персонажи</h2>
+  <h2 class="title">Персонажи</h2>
   <div class="charItem" v-for="item in chars" :key="item.id">
     <div>
       <input @input="select(item.id)" type="checkbox" :id="'checkbox_' + item.id" />

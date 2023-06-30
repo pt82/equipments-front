@@ -5,7 +5,10 @@
     <CharBar
     :chars="chars"
     />
-    <Report/>
+    <Report
+    :guildmember="guildmember"
+    :guildmemberChars="guildmemberChars"
+    />
   </body>
 
 </div>
@@ -29,6 +32,20 @@ export default {
       chars: [
         {
           id: 1,
+          name: 'Мол'
+        },
+        {
+          id: 2,
+          name: 'Вейдер'
+        },
+        {
+          id: 3,
+          name: 'Люк'
+        }
+      ],
+      guildmember: [
+        {
+          id: 1,
           name: 'Марат'
         },
         {
@@ -38,6 +55,23 @@ export default {
         {
           id: 3,
           name: 'Руслан'
+        }
+      ],
+      guildmemberChars: [
+        {
+          id: 1,
+          name: 'Мол',
+          relict: 2
+        },
+        {
+          id: 2,
+          name: 'Вейдер',
+          relict: 5
+        },
+        {
+          id: 3,
+          name: 'Люк',
+          relict: 7
         }
       ]
     }
