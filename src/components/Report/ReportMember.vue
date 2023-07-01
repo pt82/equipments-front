@@ -1,6 +1,5 @@
 <template>
 <div class="reportList">
-  <h2 class="title">Отчет</h2>
   <div class="reportItems" v-for="member in guildmember" :key="member.id">
     <div class="reportItem">
       <h3 class="guildmember">{{ member.name }}</h3>
@@ -22,7 +21,7 @@
 
 <script>
 export default {
-  name: 'Report',
+  name: 'ReportMember',
   props:
   {
     guildmember:

@@ -3,23 +3,23 @@
   <h2 class="title">Персонажи</h2>
   <div class="charRel">
     <input type="checkbox"/>
-    <label>1р</label>
+    <label class="label">1р</label>
     <input type="checkbox"/>
-    <label>2р</label>
+    <label class="label">2р</label>
     <input type="checkbox"/>
-    <label>3р</label>
+    <label class="label">3р</label>
     <input type="checkbox"/>
-    <label>4р</label>
+    <label class="label">4р</label>
     <input type="checkbox"/>
-    <label>5р</label>
+    <label class="label">5р</label>
     <input type="checkbox"/>
-    <label>6р</label>
+    <label class="label">6р</label>
     <input type="checkbox"/>
-    <label>7р</label>
+    <label class="label">7р</label>
     <input type="checkbox"/>
-    <label>8р</label>
+    <label class="label">8р</label>
     <input type="checkbox"/>
-    <label>9р</label>
+    <label class="label">9р</label>
   </div>
   <div class="charItem" v-for="item in chars" :key="item.id">
     <div>

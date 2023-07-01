@@ -5,12 +5,18 @@
     <CharBar
     :chars="chars"
     />
-    <Report
-    :guildmember="guildmember"
-    :guildmemberChars="guildmemberChars"
-    />
+    <div class="report">
+      <h2 class="title">Отчет</h2>
+      <ReportMember
+      :guildmember="guildmember"
+      />
+      <ReportChar
+      :chars="chars"
+      :guildmember="guildmember"
+      />
+    </div>
   </body>
-
+  <Footer/>
 </div>
 </template>
 <script>
@@ -18,14 +24,18 @@
 import './Main.css'
 import Header from '../components/Header/Header.vue'
 import CharBar from '../components/CharBar/CharBar.vue'
-import Report from '../components/Report/Report.vue'
+import ReportMember from '../components/Report/ReportMember.vue'
+import ReportChar from '../components/Report/ReportChar.vue'
+import Footer from '../components/Footer/Footer.vue'
 
 export default {
   name: 'Main',
   components: {
     Header,
     CharBar,
-    Report
+    ReportMember,
+    ReportChar,
+    Footer
   },
   data () {
     return {
@@ -155,24 +165,6 @@ export default {
           ]
         }
       ]
-      // ],
-      // guildmemberChars: [
-      //   {
-      //     id: 1,
-      //     name: 'Мол',
-      //     relict: 2
-      //   },
-      //   {
-      //     id: 2,
-      //     name: 'Вейдер',
-      //     relict: 5
-      //   },
-      //   {
-      //     id: 3,
-      //     name: 'Люк',
-      //     relict: 7
-      //   }
-      // ]
     }
   },
   created () {
