@@ -9,7 +9,7 @@
           <p class="guildmemberCharName">{{ item.name }}</p>
         </div> -->
 
-        // Тут надо разобраться...
+        // Разбираемся...
         <div class="guildmemberChars" v-for="char in item.chars" :key="char.id">
           <p class="guildmemberCharRelict">{{ char.relict }}р</p>
           <p class="guildmemberCharName">| {{ char.name }}</p>
